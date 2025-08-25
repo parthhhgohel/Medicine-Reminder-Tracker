@@ -1,0 +1,136 @@
+.heading-h2{
+    font-size: 2.6rem;
+    font-weight: 500;
+    color: $color-grey-dark-1;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.heading-h3{
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: $color-grey-dark-1;
+    font-family: 'Poppins', sans-serif;
+}
+
+.heading-h4{
+    font-size: 2rem;
+    font-weight: 500;
+    color: $color-grey-dark-1;
+    font-family: 'Poppins', sans-serif;
+}
+
+.heading-h5{
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: $color-grey-dark-1;
+    font-family: 'Poppins', sans-serif;
+}
+
+.heading-h6{
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: $color-grey-dark-1;
+    font-family: 'Poppins', sans-serif;
+}
+
+.para-1{
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: $color-grey-dark-1;
+    font-family: 'Poppins', sans-serif;
+}
+
+.para-2{
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: $color-grey-dark-1;
+    font-family: 'Poppins', sans-serif;
+}
+
+.para-3{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: $color-grey-dark-1;
+    font-family: 'Poppins', sans-serif;
+}
+
+.para-4{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: $color-grey-dark-1;
+    font-family: 'Poppins', sans-serif;
+}
+
+.para-5{
+    font-size: 1rem;
+    font-weight: 500;
+    color: $color-grey-dark-1;
+    font-family: 'Poppins', sans-serif;
+}
+
+.para-6{
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: $color-grey-dark-1;
+    font-family: 'Poppins', sans-serif;
+}
+
+.hidden{
+    display: none !important;
+}
+
+.active{
+    display: block !important;
+}
+
+// Components
+
+.btn{
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+    &--primary{
+        background-color: $color-primary;
+        color: $color-white;
+        &:hover{
+            background-color: $color-primary-dark;
+        }
+    }
+    &--secondary{
+        background-color: $color-secondary;
+        color: $color-grey-dark-1;
+        &:hover{
+            background-color: $color-secondary-dark;
+        }
+    }
+}
+
+.card-btn{
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    &--primary{
+        background-color: $color-primary;
+        color: $color-white;
+        &:hover{
+            background-color: $color-primary-dark;
+        }
+    }
+    &--secondary{
+        background-color: $color-secondary;
+        color: $color-grey-dark-1;
+        &:hover{
+            background-color: $color-secondary-dark;
+        }
+    }
+}

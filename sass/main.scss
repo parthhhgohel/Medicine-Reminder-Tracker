@@ -1,2 +1,9 @@
 
-@use 'home';
+@import 'variables';
+@import 'typography';
+@import 'mixins';
+@import 'home';
+@import 'components/cards';
+@import 'components/header';
+@import 'components/profiles';
+@import 'components/form';

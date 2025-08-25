@@ -1,0 +1,38 @@
+.profiles{
+    list-style: none;
+}
+
+.person{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    &__img{
+        width: 6rem;
+        height: 6rem;
+        border-radius: 50%;
+        & img{
+            width: 6rem;
+            height: 6rem;
+            border-radius: 50%;
+        }
+    }
+
+    &__info{
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    &__name{
+        font-weight: 500;
+        color: $color-grey-dark-1;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    &__symptoms{
+        font-weight: 500;
+        color: $color-grey-dark-1;
+        font-family: 'Poppins', sans-serif;
+    }
+}

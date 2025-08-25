@@ -1,0 +1,48 @@
+.form-group{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    margin: 0 auto;
+
+    & label{
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: $color-grey-dark-1;
+        text-align: left;
+        font-family: 'roboto', sans-serif;
+    }
+
+    & input{
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid $color-grey-light-1;
+        border-radius: 0.5rem;
+        font-size: 1.6rem;
+        color: $color-grey-dark-1;
+        font-family: 'roboto', sans-serif;
+        transition: all 0.2s ease-in-out;
+
+
+        &:focus{
+            outline: none;
+            border-color: $color-primary;
+            transform: scale(1.03);
+        }
+    }
+    &:not(:last-child){
+        margin-bottom: 0.5rem;
+    }
+}
+
+.dosage-time{
+    display: flex;
+    gap: 2rem;
+}
+
+.form-action{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}

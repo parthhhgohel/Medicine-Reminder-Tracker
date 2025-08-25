@@ -1,18 +1,263 @@
+<!-- Perfect! Let’s deep dive into the Medicine Reminder & Tracker idea 💊.
+This one is practical, intermediate, and a great way to strengthen your HTML, CSS, JS skills.
+
+🌟 Project: Medicine Reminder & Tracker
+📝 Problem
+
+Many people (especially elderly, busy professionals, and students) forget to take their medicines on time. Missing doses can be harmful. Existing apps are often heavy, complex, or require sign-ups. A lightweight web-based medicine tracker can help solve this.
+
+🎯 Solution
+
+A simple, responsive web app where users can:
+
+Add their medicines with details.
+
+Set reminders (time-based notifications).
+
+Track whether they took the medicine or skipped it.
+
+🔑 Core Features
+
+Add Medicine
+
+Input fields: medicine name, dosage (e.g., 1 tablet), frequency (daily, weekly, custom), and time of day.
+
+Store data in localStorage (so it persists even after refresh).
+
+Medicine Schedule Display
+
+Show a list of medicines with details in a card format.
+
+Each card should display:
+
+Medicine name
+
+Dosage
+
+Time
+
+Status (Pending / Taken)
+
+Reminder Notifications
+
+Use JavaScript setTimeout / setInterval to check times.
+
+Browser notifications (Notification API) to remind users.
+
+Example: “💊 Time to take Paracetamol 500mg!”
+
+Mark as Taken / Skipped
+
+User clicks a button (✔ Taken / ❌ Skipped).
+
+Update the status in the list (maybe with color coding).
+
+History / Progress Tracker (Optional but nice!)
+
+Keep a history log of taken/skipped medicines.
+
+Show a small chart (using Chart.js) to visualize adherence.
+
+🖼️ UI / Layout (Simple Wireframe)
+------------------------------------
+| Medicine Reminder & Tracker       |
+------------------------------------
+| + Add Medicine                    |
+|----------------------------------|
+| Name: [_______] Dosage: [__]     |
+| Time: [_____] Frequency: [Daily] |
+| [ Add Button ]                    |
+------------------------------------
+| Today's Medicines:                |
+------------------------------------
+| Paracetamol | 1 Tab | 10:00 AM    |
+| [✔ Taken] [❌ Skipped]            |
+------------------------------------
+| Vitamin D | 1 Tab | 9:00 PM       |
+| [✔ Taken] [❌ Skipped]            |
+------------------------------------
+| Progress: 80% taken today ✅       |
+------------------------------------
+
+⚙️ Tech Stack & Tools
+
+HTML → Structure (form, list, buttons).
+
+CSS → Styling (cards, responsive layout, color codes for taken/skipped).
+
+JavaScript →
+
+Handle form input.
+
+Save/retrieve medicines from localStorage.
+
+Check current time & trigger reminders.
+
+Use Browser Notification API.
+
+(Optional) Chart.js → For visualizing medicine adherence.
+
+🚀 Extra Features (if you want to go beyond intermediate)
+
+Dark/Light mode toggle 🌙☀️
+
+Export/Import medicine data as JSON.
+
+Multi-user profiles (for families).
+
+Voice alerts (using Web Speech API).
+
+PWA (Progressive Web App) → so it works offline and installable like a mobile app.
+
+✅ This project is intermediate: not too basic (like a todo list) but not too advanced (like full backend + authentication).
+It will teach you form handling, local storage, timers, notifications, and UI state updates. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="./img/logo.jpg">
 
-    <title>Document</title>
+    <!-- Google Fonts -->
+     <!-- body font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- title font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <script defer type="module" src="script.js"></script>
+
+    <title>PillStack</title>
 </head>
 <body>
+    <header class="header">
+        <div class="header__logo">
+            <img src="img/logo.jpg" alt="logo">
+            <h3 class="heading-h2">PillStack</h3>
+        </div>
+        <ul class="header__lists">
+            <li class="header__list-item"><a href="#" class="heading-h4"><ion-icon name="home-outline"></ion-icon> Home</a></li>
+            <li class="header__list-item"><a href="#medicine-list" class="heading-h4"><ion-icon name="list-outline"></ion-icon> List</a></li>
+            <li class="header__list-item profile-dropdown"><a href="#" class="heading-h4"> <ion-icon name="person-outline"></ion-icon> Profile</a>
+                <!-- Dropdown -->
+                <div class="dropdown">
+                    <ul class="dropdown__lists">
+                        <li class="dropdown__list-item">
+                            <a href="#" class="profile-link">
+                                <img src="img/face-1.jpg" alt="person" class="profile__list__img">
+                                <p class="person__name para-3">John Doe</p>
+                            </a>
+                        </li>
+                        <li class="dropdown__list-item"><a href="#" class="heading-h4">Settings</a></li>
+                        <li class="dropdown__list-item"><a href="#" class="heading-h4">Logout</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </header>
     <div class="container">
-        <form action="#">
-            <input type="text" placeholder="Enter your name">
-            <button type="submit">Submit</button>
-        </form>
+        <img src="img/bg-2.jpg" alt="bg">
+        <section class="add-medicine">
+            <form action="#" class="add-medicine-form">
+                <h2 class="heading-h3">Add Medicine</h2>
+                <div class="form-group">
+                    <label for="medicine-name">Medicine Name</label>
+                    <input type="text" placeholder="Medicine Name" id="medicine-name" required>
+                </div>
+
+                <!-- medicine description -->
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" placeholder="Description" id="description" required>
+                </div>
+                
+                <div class="dosage-time">
+                    <div class="form-group">
+                        <label for="dosage">Dosage</label>
+                        <input type="text" placeholder="Dosage" id="dosage" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="time">Time</label>
+                        <input type="time" id="time" placeholder="Time" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="frequency">Frequency</label>
+                    <input type="text" id="frequency" placeholder="Frequency" value="Daily" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="medicine-photo">Medicine Photo</label>
+                    <input type="file" accept=".jpg,.jpeg,.png" id="medicine-photo" class="medicine-photo">
+                </div>
+                <div class="form-action">
+                    <button type="submit" class="btn btn--primary">Add Medicine</button>
+                </div>
+            </form>
+        </section>
+        <!-- <section class="medicine-list" id="medicine-list">
+            <h2 class="heading-h3">List</h2>
+            <ul class="lists">
+                <li class="list__card">
+                    <div class="list__card__content">
+                        <div class="list__card__photo">
+                            <img src="img/liquid.jpg" alt="medicine" class="list__card__img">
+                        </div>
+                        <div class="list__card__info">
+                            <p class="list__card__name para-1">Vrikast-LC</p>
+                            <p class="list__card__description para-2">For BP</p>
+                            <div>
+                                <button class="list__card__dosage para-4 card-btn">1 Tab</button>
+                                <button class="list__card__time para-4 card-btn">9:00 PM</button>
+                                <button class="list__card__remaining para-4 card-btn">1 Day</button>
+                                <button class="list__card__status para-4 card-btn">Taken</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="list__card">
+                    <div class="list__card__content">
+                        <div class="list__card__photo">
+                            <img src="img/capsule.jpeg" alt="medicine" class="list__card__img">
+                        </div>
+                        <div class="list__card__info">
+                            <p class="list__card__name para-1">Paracetamol</p>
+                            <p class="list__card__description para-2">For Fever</p>
+                            <div>
+                                <button class="list__card__dosage para-4 card-btn">1 Tab</button>
+                                <button class="list__card__time para-4 card-btn">9:00 PM</button>
+                                <button class="list__card__status para-4 card-btn">Taken</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <section class="profile">
+            <h2 class="heading-h3">Profiles</h2>
+
+            <ul class="profiles">
+                <li class="profile__card">
+                    <div class="person">
+                        <img src="img/face-1.jpg" alt="person" class="person__img">
+                        <div class="person__info">
+                            <p class="person__name para-2">John Doe</p>
+                            <p class="person__symptoms para-3">Cough</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </section> -->
     </div>
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
